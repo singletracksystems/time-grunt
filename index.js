@@ -67,11 +67,6 @@ module.exports = function (grunt, cb) {
 		var totalTime = Date.now() - startTime;
 		var longestTaskName = tableData.reduce(function (acc, row) {
 			var avg = row[1] / totalTime;
-
-			if (avg < 0.01 && !grunt.option('verbose')) {
-				return acc;
-			}
-
 			return Math.max(acc, row[0].length);
 		}, 0);
 
@@ -116,11 +111,11 @@ module.exports = function (grunt, cb) {
 			var avg = row[1] / totalTime;
 
 			// hide the watch task
-			if (!grunt.option('verbose') && /^watch($|:)/.test(row[0])) {
+			if (/^watch($|:)/.test(row[0])) {
 				return null;
 			}
 
-			if (numberIsNan(avg) || (avg < 0.01 && !grunt.option('verbose'))) {
+			if (numberIsNan(avg)) {
 				return null;
 			}
 
