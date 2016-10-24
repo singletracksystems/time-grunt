@@ -42,9 +42,7 @@ require('time-grunt')(grunt, (stats, done) => {
 
 ## Clean layout
 
-The `watch` task and tasks that take less than 1% of the total time are hidden to reduce clutter.
-
-Run grunt with `grunt --verbose` to see all tasks.
+The `watch` task is hidden to reduce clutter.
 
 
 ## License
